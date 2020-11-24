@@ -33,11 +33,14 @@
 	  			우리 학교에 속하는 학생 및 교직원들만 접근하는 사이트입니다. 
 	  			<br>
 	  			<img src = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2465035512,3291108693&fm=26&gp=0.jpg" >
-	  			  			
+	  		<br>
+			<br>
+              등록 페이지 이동: <a href="login.jsp">Login Page</a> 	  			
 	  		</c:if>
 			<c:if test="${not empty childPage}">
 				<jsp:include page="${childPage}" flush="true"></jsp:include>
 			</c:if>
+	
 		</div>
 	</div>
 </body>

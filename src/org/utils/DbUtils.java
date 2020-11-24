@@ -1,4 +1,4 @@
-package org.maoge.utils;
+package org.utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,10 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-/**
- * 数据库操作工具类
- */
 public class DbUtils {
 
 	// 连接所需的固定参数
@@ -37,7 +33,7 @@ public class DbUtils {
 	/**
 	 * 释放连接
 	 */
-	public static void releasonConnection(ResultSet rs, Statement st, Connection conn) {
+	public static void releaseConnection(ResultSet rs, Statement st, Connection conn) {
 		try {
 			if (rs != null)
 				rs.close();

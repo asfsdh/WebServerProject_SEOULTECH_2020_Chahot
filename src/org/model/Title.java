@@ -1,4 +1,4 @@
-package org.maoge.model;
+package org.model;
 
 
 public class Title {

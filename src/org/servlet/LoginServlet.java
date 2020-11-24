@@ -36,7 +36,7 @@ public class LoginServlet extends HttpServlet {
 			if (user == null) {
 				// 跳转到错误提示页面，并提示用户不存在
 				tipInfo = "用户不存在";
-				page = "error.jsp";
+				page = "tip.jsp";
 			}
 			else
 			{
@@ -52,7 +52,9 @@ public class LoginServlet extends HttpServlet {
 		} catch (Exception e) {
 			// 跳转到错误提示页面，并提示相应错误信息
 			tipInfo = e.getMessage();
-			page = "error.jsp";
+			page = "tip.jsp";
 		}
+		request.setAttribute("tipInfo", tipInfo);// 设置同手信息
+		request.getRequestDispatcher("/" + page).forward(request, response);// 跳转到page页面
 	}
 }

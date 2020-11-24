@@ -1,4 +1,5 @@
 package org.service;
+import org.dao.UserDao;
 import java.util.List;
 import org.model.User;
 
@@ -10,12 +11,11 @@ public class LoginService {
 		}
 		User user = null;
 		try {
-			// 从数据库中执行查询，此处暂时用一个固定对象代替
-			user = new User();
-			user.setUserId(1);
-			user.setUserName("test");
-			user.setUserPassword("1234");
-			user.setUserRole("student");// 学生
+			UserDao userDao = new UserDao();
+			List<User> list = userDao.getUser(userName, userPassword);
+			if (list.size() == 1) {// 只有匹配出一个用户时，才是合法登录
+				user = list.get(0);
+			}
 		} catch (Exception e) {
 			// 抛出数据库异常
 			throw new Exception("数据库操作异常:" + e.getMessage());
