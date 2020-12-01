@@ -1,4 +1,5 @@
-package org.maoge.model;
+package org.model;
+
 
 public class Course {
 	private int courseId;
@@ -16,6 +17,7 @@ public class Course {
 		this.courseUserName = courseUserName;
 	}
 
+	
 	public int getCourseId() {
 		return courseId;
 	}

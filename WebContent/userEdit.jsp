@@ -29,9 +29,8 @@
 				<td><select name="userRole" value="${user.userRole}">
 						<option value="부교장">부교장</option>
 						<option value="교수">교수</option>
-						<option value="학생">학생</option>
 						<option value="학과장">학과장</option>
-						<option value="교수">학생</option>
+						<option value="학생">학생</option>
 						<option value="명예교수">명예교수</option>
 				</select></td>
 			</tr>

@@ -4,9 +4,12 @@
 <html>
 <head>
 <title>userManage.jsp</title>
+<link href="css/content.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<table>
+    <div id="content_top">인원 관리</div>
+	<div id="content_mid">
+	<table class="table_theme1">
 		<thead>
 			<tr>
 				<th>아이디</th>
@@ -30,7 +33,9 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
+	<div id="content_bottom">	
 	<a href="/SchoolManagementSystem/RouteServlet?childPage=userAdd.jsp">교수 위임/학생 입학 허가</a>
-	
+	</div>
 </body>
 </html>
