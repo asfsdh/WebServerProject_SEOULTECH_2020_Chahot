@@ -4,7 +4,9 @@
   <head>   
     <title>login.jsp</title>
     <link href="css/index.css" type="text/css" rel="stylesheet" />
+    <link href="css/login.css" type="text/css" rel="stylesheet" />
   </head>
+  
   <body>
   <div id="main">
 		<div id="top">
@@ -22,15 +24,24 @@
 			</ul>
 		</div>
 		<!-- right 부분: 구체적인 내용 제시 -->
-		<div id="right">
-		<form id="mainForm" method="post" action="/SchoolManagementSystem/LoginServlet">
-  		성호입력:<input type="text" name="userName" />
-  		<br/>
-  		비밀번호:<input type="password" name="userPassword"/>	
-  		<br/>
-  		<input type="submit" value="로그인"/>
-  	</form>
+		<div id="mid">
+		<div id="login_input">
+			<form id="mainForm" method="post"
+				action="/SchoolManagementSystem/LoginServlet">
+				<div class="row">
+					<span>성호입력：</span><input type="text" name="userName" />
+				</div>
+				<div class="row">
+					<span>비밀번호：</span><input type="password" name="userPassword" />
+				</div>
+				<div class="row">
+					<input class="submit" type="submit" value="로그인" />
+				</div>
+			</form>
 		</div>
+	</div>
+		
 	</div>
   </body>
 </html>
+

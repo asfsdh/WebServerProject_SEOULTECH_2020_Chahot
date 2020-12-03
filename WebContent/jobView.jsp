@@ -7,10 +7,10 @@
 <link href="css/content.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<div id="content_top">수업 평가</div>
+	<div id="content_top">과제 조회</div>
 	<div id="content_mid">
 		<form method="get" action="/SchoolManagementSystem/RouteServlet">
-			<input type="hidden" name="childPage" value="jobCheck.jsp"> <select
+			<input type="hidden" name="childPage" value="jobView.jsp"> <select
 				name="selectedTitle">
 				<c:forEach items="${titles}" var="item">
 					<option value="${item.titleId}">${item.titleContent}</option>
@@ -21,22 +21,15 @@
 			<thead>
 				<tr>
 					<th>과제 번호</th>
-					<th>이름</th>
-					<th>제출 시간</th>
-					<th>내용</th>
-					<th>점수</th>
-					<th>평가</th>
+					<th>풀기</th>
+
 				</tr>
 			</thead>
 			<c:forEach items="${jobs}" var="item">
 				<tr>
 					<td>${item.jobId}</td>
-					<td>${item.jobUserName}</td>
-					<td>${item.jobTime}</td>
-					<td>${item.jobContent}</td>
-					<td>${item.jobScore}</td>
-					<td><a
-						href="/SchoolManagementSystem/RouteServlet?childPage=jobCheckEdit.jsp&jobId=${item.jobId}">평가</a></td>
+  			        <td><a
+						href="/SchoolManagementSystem/RouteServlet?childPage=jobSubmit.jsp&jobId=${item.jobId}">풀기</a></td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -7,7 +7,7 @@
 <link href="css/content.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-	<div id="content_top">평가 관리</div>
+	<div id="content_top">시험 출제</div>
 	<div id="content_mid">
 		<table class="table_theme1">
 			<thead>
@@ -24,7 +24,7 @@
 					<td>${item.titleContent}</td>
 					<td>${item.titleCourseName}</td>
 					<td><a
-						href="/SchoolManagementSystem/RouteServlet?childPage=titleEdit.jsp&titleId=${item.titleId}">신청</a></td>
+						href="/SchoolManagementSystem/RouteServlet?childPage=titleEdit.jsp&titleId=${item.titleId}">출제 항목 변경</a></td>
 				</tr>
 			</c:forEach>
 		</table>

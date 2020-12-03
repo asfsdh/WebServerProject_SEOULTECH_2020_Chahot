@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 			user = lc.checkLogin(userName, userPassword);
 			if (user == null) {
 				// 跳转到错误提示页面，并提示用户不存在
-				tipInfo = "用户不存在";
+				tipInfo = "사용자가 존재하지 않습니다.";
 				page = "tip.jsp";
 			}
 			else

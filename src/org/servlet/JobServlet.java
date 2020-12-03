@@ -56,6 +56,29 @@ public class JobServlet extends HttpServlet {
 			request.setAttribute("jobs", jobs);
 			
 			request.setAttribute("childPage", "jobCheck.jsp");
+		}if (method.equals("jobSubmit")) {
+			Job job = new Job();
+			job.setJobId(Integer.parseInt(request.getParameter("jobId")));
+			job.setJobContent(request.getParameter("jobContent"));
+			
+			job.setJobTime(TimeUtils.getNowSqlTime());
+			
+			
+			
+			jobDao.update(job);
+			
+			TitleDao titleDao = new TitleDao();
+			request.setAttribute("titles", titleDao.getTitlesByUserId(1));
+			String selectedTitle = request.getParameter("selectedTitle");
+			List<Job> jobs = null;
+			if (selectedTitle != null && !"".equals(selectedTitle)) { 
+				jobs = jobDao.getJobsByTitleId(Integer.parseInt(selectedTitle));
+			} else {
+				jobs = new ArrayList<Job>();
+			}
+			request.setAttribute("jobs", jobs);
+			
+			request.setAttribute("childPage", "jobView.jsp");
 		}
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}

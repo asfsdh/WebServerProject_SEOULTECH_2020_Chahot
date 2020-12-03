@@ -82,8 +82,31 @@ public class RouteServlet extends HttpServlet {
 			String jobId = request.getParameter("jobId");
 			Job job = jobDao.getById(Integer.parseInt(jobId));
 			request.setAttribute("job", job);
+		}if (childPage.equals("selection.jsp")) { // 进入人员管理页面需要携带人员列表信息
+			CourseDao courseDao=new CourseDao();
+			request.setAttribute("courses", courseDao.getCourses());
+		}else if (childPage.equals("jobView.jsp")) {// 作业批阅
+			// 加载学生关联的所有作业题目
+			User loginUser = (User) request.getSession().getAttribute("loginUser");
+			
+			TitleDao titleDao = new TitleDao();
+			request.setAttribute("titles", titleDao.getTitlesByUserId(1));
+			//给1号教授提交作业
+			String selectedTitle = request.getParameter("selectedTitle");
+			JobDao jobDao = new JobDao();
+			List<Job> jobs = null;
+			if (selectedTitle != null && !"".equals(selectedTitle)) { // 如果有选择的作业题目，则加载该题目下所有作业内容
+				jobs = jobDao.getJobsByTitleId(Integer.parseInt(selectedTitle));
+			} else {// 否则设置一个空的列表
+				jobs = new ArrayList<Job>();
+			}
+			request.setAttribute("jobs", jobs);
+		}else if (childPage.equals("jobSubmit.jsp")) {// 批阅具体一个作业
+			JobDao jobDao = new JobDao();
+			String jobId = request.getParameter("jobId");
+			Job job = jobDao.getById(Integer.parseInt(jobId));
+			request.setAttribute("job", job);
 		}
-	
 
 	request.getRequestDispatcher("/index.jsp").forward(request, response);// 跳转到index.jsp
 	}

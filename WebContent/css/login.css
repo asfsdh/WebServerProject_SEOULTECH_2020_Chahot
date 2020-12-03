@@ -1,0 +1,33 @@
+@charset "UTF-8";
+	/*login.css*/
+	/*应用于全部内容的格式*/
+	*{
+    	margin:0px;
+    	padding:0px;
+    	font-size:12px;
+    	font-family:"宋体";
+    	width:auto;
+    }
+
+    #login_input{
+		border:thin solid #FFEFD8;
+    	width:400px;
+    	height:280px;
+    	margin:40px auto;
+    	text-align:center;
+    }
+    .row{
+    	width:100%;
+    	margin:40px auto;
+    }
+    .row span{
+    	width:100px;
+    }
+    .row input{
+    	width:150px;
+    }
+    .row .submit{
+   		border-radius:8px;
+   		background-color: #AAA5D4;
+    }
+

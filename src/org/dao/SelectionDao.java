@@ -13,6 +13,27 @@ import org.utils.DbUtils;
 
 public class SelectionDao {
 
+	public List<Selection> getSelectionsByUserId(int courseId) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<Selection> selections = new ArrayList<Selection>();
+		try {
+			conn = DbUtils.getConnection();
+			String sql = "select * from selection where selection_user=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, courseId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				selections.add(makeOneSelection(rs));
+			}
+		} catch (SQLException e) {
+			System.err.println(e.getMessage());
+		} finally {
+			DbUtils.releaseConnection(rs, ps, conn);
+		}
+		return selections;
+	}
 	public List<Selection> getSelectionsByCourseId(int courseId) {
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -34,7 +55,6 @@ public class SelectionDao {
 		}
 		return selections;
 	}
-
 
 	public int add(Selection selection) {
 		Connection conn = null;
