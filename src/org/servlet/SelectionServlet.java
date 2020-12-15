@@ -47,9 +47,9 @@ public class SelectionServlet extends HttpServlet {
 		SelectionDao.add(selection);
 		}
 
-		// 携带最新用户数据到人员管理页面
+		
 		request.setAttribute("selections", SelectionDao.getSelectionsByCourseId(loginUser.getUserId()));
-		// 跳转到管理后台页
+		
 		request.setAttribute("childPage", "sele.jsp");
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}

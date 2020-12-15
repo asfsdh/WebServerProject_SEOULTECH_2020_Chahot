@@ -8,13 +8,13 @@ import java.sql.Statement;
 
 public class DbUtils {
 
-	// 连接所需的固定参数
+	// 기본조작
 	private static String driver = "com.mysql.jdbc.Driver";
 	private static String url = "jdbc:mysql://127.0.0.1:3306/sms?useUnicode=true&characterEncoding=utf-8";
 	private static String user = "root";
 	private static String password = "Chahot";
 
-	// 初始化的时候加载去的弄
+	
 	static {
 		try {
 			Class.forName(driver);
@@ -24,14 +24,14 @@ public class DbUtils {
 	}
 
 	/**
-	 * 获取连接
+	 * 연결하기
 	 */
 	public static Connection getConnection() throws SQLException {
 		return DriverManager.getConnection(url, user, password);
 	}
 
 	/**
-	 * 释放连接
+	 * 연결종류
 	 */
 	public static void releaseConnection(ResultSet rs, Statement st, Connection conn) {
 		try {

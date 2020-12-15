@@ -25,28 +25,28 @@ public class TitleServlet extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {// 处理post请求
-		// 设置输入输出格式、编码
+		
 		response.setContentType("text/html");
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
-		// 获取method参数
+		
 		String method = request.getParameter("method");
-		// 获取登录用户信息
+		
 		User loginUser = (User) request.getSession().getAttribute("loginUser");
-		// 操作数据库
+		// DB 조작
 		TitleDao titleDao = new TitleDao();
 		SelectionDao selectionDao = new SelectionDao();
 		JobDao jobDao = new JobDao();
 		if (method.equals("titleAdd")) {
-			// 新增作业题目
+			
 			Title title = new Title();
 			title.setTitleContent(request.getParameter("titleContent"));
 			title.setTitleCourse(Integer.parseInt(request.getParameter("titleCourse")));
 			title.setTitleTime(TimeUtils.getNowSqlTime());
 			int newId = titleDao.add(title);
-			// 查询选择该门课的用户id
+			// id로 유저 조회
 			List<Selection> selections = selectionDao.getSelectionsByCourseId(title.getTitleCourse());
-			// 为每个选择该课的学生新增作业内容记录
+			// 과제 추가 기능 실현
 			for (Selection selection : selections) {
 				Job job = new Job();
 				job.setJobTitle(newId);
@@ -63,9 +63,9 @@ public class TitleServlet extends HttpServlet {
 			
 			titleDao.update(title);
 		}
-		// 携带最新用户数据到人员管理页面
+		//조작된 정보 반환
 		request.setAttribute("titles", titleDao.getTitlesByUserId(loginUser.getUserId()));
-		// 跳转到管理后台页
+		//조작 완성한 후에 전달할 페이지
 		request.setAttribute("childPage", "titleManage.jsp");
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}

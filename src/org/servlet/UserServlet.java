@@ -26,10 +26,10 @@ public class UserServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		
 		String method = request.getParameter("method");
-		// 用户操作数据库
+		
 		UserDao userDao = new UserDao();
 		if (method.equals("userAdd")) {
-			// 获取用户在网页输入的用户名和密码
+			
 			User user = new User();
 			user.setUserName(request.getParameter("userName"));
 			user.setUserPassword(request.getParameter("userPassword"));
@@ -37,20 +37,20 @@ public class UserServlet extends HttpServlet {
 			
 			userDao.add(user);
 		} else if (method.equals("userEdit")) {
-			// 获取用户在网页输入的用户名和密码
+			
 			User user = new User();
 			user.setUserId(Integer.parseInt(request.getParameter("userId")));
 			user.setUserName(request.getParameter("userName"));
 			user.setUserPassword(request.getParameter("userPassword"));
 			user.setUserRole(request.getParameter("userRole"));
-			// 保存到数据库
+			
 			userDao.update(user);
 		} else if (method.equals("userDelete")) {
 			userDao.deleteById(Integer.parseInt(request.getParameter("userId")));
 		} 
-		// 携带最新用户数据到人员管理页面
+		
 		request.setAttribute("users", userDao.getUsers());
-		// 跳转到管理后台页面，且子页面是用户管理
+		
 		request.setAttribute("childPage", "userManage.jsp");
 		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	}
